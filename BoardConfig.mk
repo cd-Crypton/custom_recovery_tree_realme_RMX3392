@@ -87,6 +87,7 @@ TARGET_BOARD_PLATFORM := mt6877
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TARGET_USERIMAGES_USE_F2FS := true
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
+RECOVERY_SDCARD_ON_DATA := true
 
 # Security Patch
 PLATFORM_SECURITY_PATCH := 2099-12-31
@@ -96,14 +97,16 @@ PLATFORM_VERSION_LAST_STABLE := $(PLATFORM_VERSION)
 
 # TWRP Configuration
 TW_THEME := portrait_hdpi
+TW_DEFAULT_LANGUAGE := en
 TW_INPUT_BLACKLIST := "hbtp_vm"
-TW_INCLUDE_REPACKTOOLS := true
-RECOVERY_SDCARD_ON_DATA := true
+TW_USE_TOOLBOX := true
+TW_NO_SCREEN_BLANK := true
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
 TW_MAX_BRIGHTNESS := 2047
 TW_DEFAULT_BRIGHTNESS := 1200
-TW_SCREEN_BLANK_ON_BOOT := true
 TW_INCLUDE_RESETPROP := true
+
+# This part is only for reducing image final size. Most MTK recovery-as-boot devices had smaller boot partition size.
 TW_EXCLUDE_APEX := true
 TW_EXCLUDE_PYTHON := true
 TW_EXCLUDE_NANO := true
